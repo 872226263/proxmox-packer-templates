@@ -25,7 +25,7 @@ machine = "q35"
 bios    = "ovmf"
 
 efi_config = {
-  efi_storage_pool  = "local"
+  efi_storage_pool  = "local-lvm"
   efi_type          = "4m"
   pre_enrolled_keys = false
 }
