@@ -32,8 +32,8 @@ efi_config = {
 
 # GPU passthrough - RTX 5090
 pci_devices = [
-  { host = "0000:01:00.0", pcie = true },  # RTX 5090 GPU
-  { host = "0000:01:00.1", pcie = true }   # RTX 5090 Audio
+  { host = "0000:01:00.0", pcie = true, x_vga = true, hide_rombar = false },   # RTX 5090 GPU
+  { host = "0000:01:00.1", pcie = true, x_vga = false, hide_rombar = false }   # RTX 5090 Audio
 ]
 
 # Disable virtual VGA (using physical GPU)

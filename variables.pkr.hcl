@@ -171,8 +171,10 @@ variable "efi_config" {
 variable "pci_devices" {
   description = "PCI devices to passthrough to the VM (e.g., GPU)."
   type = list(object({
-    host = string
-    pcie = bool
+    host        = string
+    pcie        = bool
+    x_vga       = bool
+    hide_rombar = bool
   }))
   default = []
 }

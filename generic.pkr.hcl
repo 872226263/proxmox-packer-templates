@@ -81,8 +81,10 @@ source "proxmox-iso" "vm" {
   dynamic "pci_devices" {
     for_each = var.pci_devices
     content {
-      host = pci_devices.value.host
-      pcie = pci_devices.value.pcie
+      host        = pci_devices.value.host
+      pcie        = pci_devices.value.pcie
+      x_vga       = pci_devices.value.x_vga
+      hide_rombar = pci_devices.value.hide_rombar
     }
   }
 
