@@ -11,9 +11,8 @@ memory    = 43008
 cpu_cores = 16
 disk_size = "60G"
 
-# Network with VLAN isolation for rental machines
-# IP range: 192.168.2.201-205 (set via cloudbase-init when cloning)
-network_adapter_vlan = 100  # Change to your VLAN ID for rental isolation
+# Network config (VLAN can be set when cloning if needed)
+# network_adapter_vlan = 100  # Uncomment if VLAN isolation needed
 
 # NOTE: Windows 11 requires UEFI, GPU passthrough configured after cloning
 # See: scripts/deploy-gpu-vm.sh

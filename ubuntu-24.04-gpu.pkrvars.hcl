@@ -12,9 +12,8 @@ memory    = 43008
 cpu_cores = 16
 disk_size = "60G"
 
-# Network with VLAN isolation for admin machines
-# IP range: 192.168.2.201-205 (set via cloud-init when cloning)
-network_adapter_vlan = 100  # Change to your VLAN ID for admin isolation
+# Network config (VLAN can be set when cloning if needed)
+# network_adapter_vlan = 100  # Uncomment if VLAN isolation needed
 
 # Cloud-init for IP/password management
 cloud_init              = true
