@@ -82,13 +82,9 @@ source "proxmox-iso" "vm" {
   dynamic "pci_devices" {
     for_each = var.pci_devices
     content {
-      host          = pci_devices.value.host
-      pcie          = pci_devices.value.pcie
-      rombar        = pci_devices.value.rombar
-      device_id     = pci_devices.value.device_id
-      vendor_id     = pci_devices.value.vendor_id
-      sub_device_id = pci_devices.value.sub_device_id
-      sub_vendor_id = pci_devices.value.sub_vendor_id
+      host   = pci_devices.value.host
+      pcie   = pci_devices.value.pcie
+      rombar = pci_devices.value.rombar
     }
   }
 

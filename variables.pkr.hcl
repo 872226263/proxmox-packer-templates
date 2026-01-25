@@ -172,12 +172,8 @@ variable "pci_devices" {
   description = "PCI devices to passthrough to the VM (e.g., GPU)."
   type = list(object({
     host          = string
-    pcie          = optional(bool, true)
-    rombar        = optional(bool, true)
-    device_id     = optional(string, "")
-    vendor_id     = optional(string, "")
-    sub_device_id = optional(string, "")
-    sub_vendor_id = optional(string, "")
+    pcie          = bool
+    rombar        = bool
   }))
   default = []
 }

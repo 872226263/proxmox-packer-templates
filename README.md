@@ -46,10 +46,10 @@ Packer 自动化构建 Proxmox VM 模板，支持 GPU 直通，适用于 GPU 服
 apt update && apt install -y wget unzip git
 
 # 下载 Packer
-wget https://releases.hashicorp.com/packer/1.11.2/packer_1.11.2_linux_amd64.zip
+wget https://releases.hashicorp.com/packer/1.14.3/packer_1.14.3_linux_amd64.zip
 
 # 解压并安装
-unzip packer_1.11.2_linux_amd64.zip
+unzip packer_1.14.3_linux_amd64.zip
 mv packer /usr/local/bin/
 chmod +x /usr/local/bin/packer
 
@@ -143,9 +143,6 @@ packer build -var-file="credentials.pkrvars.hcl" -var-file="ubuntu-24.04-gpu.pkr
 
 # 构建 Windows GPU 模板
 packer build -var-file="credentials.pkrvars.hcl" -var-file="windows-11-gpu.pkrvars.hcl" .
-
-# 构建普通模板
-packer build -var-file="credentials.pkrvars.hcl" -var-file="ubuntu-24.04.pkrvars.hcl" .
 ```
 
 ---
