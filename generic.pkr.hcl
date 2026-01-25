@@ -68,7 +68,6 @@ source "proxmox-iso" "vm" {
   qemu_agent      = var.qemu_agent
   bios            = var.bios
   machine         = var.machine
-  args            = var.args
 
   dynamic "efi_config" {
     for_each = var.efi_config != null ? [var.efi_config] : []
@@ -82,9 +81,8 @@ source "proxmox-iso" "vm" {
   dynamic "pci_devices" {
     for_each = var.pci_devices
     content {
-      host   = pci_devices.value.host
-      pcie   = pci_devices.value.pcie
-      rombar = pci_devices.value.rombar
+      host = pci_devices.value.host
+      pcie = pci_devices.value.pcie
     }
   }
 

@@ -171,17 +171,10 @@ variable "efi_config" {
 variable "pci_devices" {
   description = "PCI devices to passthrough to the VM (e.g., GPU)."
   type = list(object({
-    host          = string
-    pcie          = bool
-    rombar        = bool
+    host = string
+    pcie = bool
   }))
   default = []
-}
-
-variable "args" {
-  description = "Additional QEMU arguments (e.g., for hiding VM from NVIDIA driver)."
-  type        = string
-  default     = ""
 }
 
 

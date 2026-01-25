@@ -27,16 +27,13 @@ efi_config = {
 
 # GPU passthrough - RTX 5090
 pci_devices = [
-  { host = "0000:01:00.0", pcie = true, rombar = true },  # RTX 5090 GPU
-  { host = "0000:01:00.1", pcie = true, rombar = true }   # RTX 5090 Audio
+  { host = "0000:01:00.0", pcie = true },  # RTX 5090 GPU
+  { host = "0000:01:00.1", pcie = true }   # RTX 5090 Audio
 ]
 
 # Disable virtual VGA (using physical GPU)
 vga_type   = "none"
 vga_memory = 0
-
-# Hide VM from NVIDIA driver (prevents Error 43) + TPM emulation for Win11
-args = "-cpu host,kvm=off,hv_vendor_id=proxmox"
 
 additional_iso_files = [
   {
