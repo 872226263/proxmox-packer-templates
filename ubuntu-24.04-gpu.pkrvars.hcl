@@ -18,20 +18,11 @@ network_adapter_vlan = 100  # Change to your VLAN ID for admin isolation
 
 # Cloud-init for IP/password management
 cloud_init              = true
-cloud_init_storage_pool = "local"
+cloud_init_storage_pool = "local-lvm"
 
-# GPU Passthrough requirements
-machine = "q35"
-bios    = "ovmf"
-
-efi_config = {
-  efi_storage_pool  = "local-lvm"
-  efi_type          = "4m"
-  pre_enrolled_keys = false
-}
-
-# GPU passthrough is configured AFTER cloning (not during build)
-# See: scripts/add-gpu-passthrough.sh
+# NOTE: Use standard BIOS for template build
+# GPU passthrough (q35, ovmf, efi) is configured AFTER cloning
+# See: scripts/deploy-gpu-vm.sh
 
 boot_wait = "5s"
 boot_command = [

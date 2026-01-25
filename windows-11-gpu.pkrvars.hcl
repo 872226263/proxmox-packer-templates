@@ -15,18 +15,8 @@ disk_size = "60G"
 # IP range: 192.168.2.201-205 (set via cloudbase-init when cloning)
 network_adapter_vlan = 100  # Change to your VLAN ID for rental isolation
 
-# GPU Passthrough requirements
-machine = "q35"
-bios    = "ovmf"
-
-efi_config = {
-  efi_storage_pool  = "local-lvm"
-  efi_type          = "4m"
-  pre_enrolled_keys = true  # Windows 11 needs Secure Boot keys
-}
-
-# GPU passthrough is configured AFTER cloning (not during build)
-# See: scripts/add-gpu-passthrough.sh
+# NOTE: Windows 11 requires UEFI, GPU passthrough configured after cloning
+# See: scripts/deploy-gpu-vm.sh
 
 additional_iso_files = [
   {
@@ -60,6 +50,6 @@ winrm_password = "123456"
 http_directory = ""
 # Enable cloud-init for IP/password management via cloudbase-init
 cloud_init              = true
-cloud_init_storage_pool = "local"
+cloud_init_storage_pool = "local-lvm"
 boot_command   = []
 provisioner    = []
