@@ -147,33 +147,56 @@ packer build -var-file="credentials.pkrvars.hcl" -var-file="windows-11-gpu.pkrva
 
 ---
 
-### 六、从模板创建 VM
+### 六、从模板创建 GPU VM
 
-#### 方法 1：Web UI
+> **重要**: GPU 直通在克隆后配置，不在模板构建时配置
 
-1. Proxmox Web UI → 找到模板 → 右键 → `Clone` → `Full Clone`
-2. 进入新 VM → `Hardware` → `Cloud-Init`
-3. 设置：
-   - **User**: `admin` (Ubuntu) / `Administrator` (Windows)
-   - **Password**: 租户密码
-   - **IP Config**: `ip=192.168.2.201/24,gw=192.168.2.1`
-   - **DNS**: `8.8.8.8`
-4. 启动 VM
-
-#### 方法 2：命令行
+#### 方法 1：使用部署脚本（推荐）
 
 ```bash
-# 克隆模板 (模板 ID 9000，新 VM ID 100)
-qm clone 9000 100 --name gpu-vm-01 --full
+# 部署 GPU VM（自动配置 GPU 直通）
+./scripts/deploy-gpu-vm.sh <模板ID> <新VMID> <VM名称> <IP地址> [密码]
 
-# 设置 Cloud-Init
-qm set 100 --ciuser admin --cipassword "租户密码"
-qm set 100 --ipconfig0 ip=192.168.2.201/24,gw=192.168.2.1
-qm set 100 --nameserver 8.8.8.8
+# 示例
+./scripts/deploy-gpu-vm.sh 9000 100 gpu-vm-01 192.168.2.201 "123456"
 
 # 启动
 qm start 100
 ```
+
+#### 方法 2：手动配置
+
+```bash
+# 1. 克隆模板
+qm clone 9000 100 --name gpu-vm-01 --full
+
+# 2. 配置 Cloud-Init
+qm set 100 --ciuser admin --cipassword "租户密码"
+qm set 100 --ipconfig0 ip=192.168.2.201/24,gw=192.168.2.1
+qm set 100 --nameserver 8.8.8.8
+
+# 3. 配置 GPU 直通
+qm set 100 --machine q35
+qm set 100 --bios ovmf
+qm set 100 --efidisk0 local-lvm:1,efitype=4m,pre-enrolled-keys=0
+qm set 100 --vga none
+qm set 100 --hostpci0 01:00.0,pcie=1,x-vga=1
+qm set 100 --hostpci1 01:00.1,pcie=1
+qm set 100 --cpu host
+
+# 4. 启动
+qm start 100
+```
+
+#### 方法 3：Web UI
+
+1. 克隆模板: 右键模板 → `Clone` → `Full Clone`
+2. 配置 Cloud-Init: `Hardware` → `Cloud-Init` → 设置用户/密码/IP
+3. 配置 GPU 直通:
+   - `Hardware` → `Add` → `PCI Device` → 选择 GPU
+   - 勾选 `All Functions`, `PCI-Express`, `Primary GPU`
+4. 设置显示: `Hardware` → `Display` → `None`
+5. 启动 VM
 
 ---
 
