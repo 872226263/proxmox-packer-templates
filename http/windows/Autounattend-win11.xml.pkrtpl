@@ -10,44 +10,31 @@
                  is available as drive D:
             -->
             <DriverPaths>
+                <!-- SCSI driver - required to detect VirtIO SCSI disk -->
+                <PathAndCredentials wcm:action="add" wcm:keyValue="1">
+                    <Path>E:\vioscsi\${driver_version}\amd64</Path>
+                </PathAndCredentials>
+                <!-- Block storage driver -->
                 <PathAndCredentials wcm:action="add" wcm:keyValue="2">
                     <Path>E:\viostor\${driver_version}\amd64</Path>
                 </PathAndCredentials>
-
+                <!-- Network driver -->
                 <PathAndCredentials wcm:action="add" wcm:keyValue="3">
                     <Path>E:\NetKVM\${driver_version}\amd64</Path>
                 </PathAndCredentials>
-
+                <!-- Balloon driver -->
                 <PathAndCredentials wcm:action="add" wcm:keyValue="4">
                     <Path>E:\Balloon\${driver_version}\amd64</Path>
                 </PathAndCredentials>
-
+                <!-- Other drivers -->
                 <PathAndCredentials wcm:action="add" wcm:keyValue="5">
-                    <Path>E:\pvpanic\${driver_version}\amd64</Path>
+                    <Path>E:\vioserial\${driver_version}\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="6">
-                    <Path>E:\qemupciserial\${driver_version}\amd64</Path>
-                </PathAndCredentials>
-
-                <PathAndCredentials wcm:action="add" wcm:keyValue="7">
-                    <Path>E:\qxldod\${driver_version}\amd64</Path>
-                </PathAndCredentials>
-
-                <PathAndCredentials wcm:action="add" wcm:keyValue="8">
-                    <Path>E:\vioinput\${driver_version}\amd64</Path>
-                </PathAndCredentials>
-
-                <PathAndCredentials wcm:action="add" wcm:keyValue="9">
                     <Path>E:\viorng\${driver_version}\amd64</Path>
                 </PathAndCredentials>
-
-                <PathAndCredentials wcm:action="add" wcm:keyValue="10">
-                    <Path>E:\vioscsi\${driver_version}\amd64</Path>
-                </PathAndCredentials>
-
-                <PathAndCredentials wcm:action="add" wcm:keyValue="11">
-                    <Path>E:\vioserial\${driver_version}\amd64</Path>
+                <PathAndCredentials wcm:action="add" wcm:keyValue="7">
+                    <Path>E:\qxldod\${driver_version}\amd64</Path>
                 </PathAndCredentials>
             </DriverPaths>
         </component>
