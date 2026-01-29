@@ -11,43 +11,43 @@
             -->
             <DriverPaths>
                 <PathAndCredentials wcm:action="add" wcm:keyValue="2">
-                    <Path>D:\viostor\${driver_version}\amd64</Path>
+                    <Path>E:\viostor\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="3">
-                    <Path>D:\NetKVM\${driver_version}\amd64</Path>
+                    <Path>E:\NetKVM\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="4">
-                    <Path>D:\Balloon\${driver_version}\amd64</Path>
+                    <Path>E:\Balloon\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="5">
-                    <Path>D:\pvpanic\${driver_version}\amd64</Path>
+                    <Path>E:\pvpanic\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="6">
-                    <Path>D:\qemupciserial\${driver_version}\amd64</Path>
+                    <Path>E:\qemupciserial\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="7">
-                    <Path>D:\qxldod\${driver_version}\amd64</Path>
+                    <Path>E:\qxldod\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="8">
-                    <Path>D:\vioinput\${driver_version}\amd64</Path>
+                    <Path>E:\vioinput\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="9">
-                    <Path>D:\viorng\${driver_version}\amd64</Path>
+                    <Path>E:\viorng\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="10">
-                    <Path>D:\vioscsi\${driver_version}\amd64</Path>
+                    <Path>E:\vioscsi\${driver_version}\amd64</Path>
                 </PathAndCredentials>
 
                 <PathAndCredentials wcm:action="add" wcm:keyValue="11">
-                    <Path>D:\vioserial\${driver_version}\amd64</Path>
+                    <Path>E:\vioserial\${driver_version}\amd64</Path>
                 </PathAndCredentials>
             </DriverPaths>
         </component>
@@ -188,7 +188,7 @@
                 <SynchronousCommand wcm:action="add">
                     <Order>3</Order>
                     <!-- Install Proxmox guest-agent -->
-                    <CommandLine>powershell -NoProfile -ExecutionPolicy Bypass -Command "D:\guest-agent\qemu-ga-x86_64.msi /quiet"</CommandLine>
+                    <CommandLine>powershell -NoProfile -ExecutionPolicy Bypass -Command "E:\guest-agent\qemu-ga-x86_64.msi /quiet"</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
             <OOBE>
