@@ -8,13 +8,12 @@ locals {
       windows_input_language = var.windows_input_language
     }))
   }
-  unattended_as_cd = length(var.unattended_content) > 0 ? [{
-    type = "sata"
-    index = 3 + length(var.unattended_content)
-    content = local.unattended_content
-    label   = "Windows Unattended CD"
-  }] : []
-  additional_cd_files = concat(var.additional_cd_files, local.unattended_as_cd)
+  # Merge unattended content into additional_cd_files if present
+  additional_cd_files = [
+    for cd in var.additional_cd_files : merge(cd, {
+      content = length(local.unattended_content) > 0 ? local.unattended_content : {}
+    })
+  ]
 }
 
 source "proxmox-iso" "vm" {
@@ -114,8 +113,8 @@ source "proxmox-iso" "vm" {
   dynamic "additional_iso_files" {
     for_each = var.additional_iso_files
     content {
-      # type             = additional_iso_files.value.type
-      # index            = additional_iso_files.value.index
+      type             = lookup(additional_iso_files.value, "type", "ide")
+      index            = lookup(additional_iso_files.value, "index", 0)
       iso_file         = var.iso_download ? "" : "${var.iso_storage_pool}:iso/${additional_iso_files.value.iso_file}"
       iso_storage_pool = var.iso_storage_pool
       iso_url          = var.iso_download ? additional_iso_files.value.iso_url : ""

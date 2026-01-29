@@ -9,8 +9,11 @@ cpu_cores          = 16
 cpu_type           = "host"
 disk_size          = "80G"
 # Data disk (1600G) should be added after cloning the template
+# Drive mapping: D:=VirtIO, E:=Windows ISO, F:=Scripts+Autounattend
 additional_iso_files = [
   {
+    type         = "ide"
+    index        = 0
     iso_file     = "virtio-win-0.1.285.iso"
     iso_url      = "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.285-1/virtio-win-0.1.285.iso"
     iso_checksum = "e14cf2b94492c3e925f0070ba7fdfedeb2048c91eea9c5a5afb30232a3976331"
@@ -27,17 +30,24 @@ unattended_content = {
 }
 additional_cd_files = [
   {
-    type = "sata"
-    index = 3
+    type   = "sata"
+    index  = 0
     files  = ["./http/windows-scripts/*"]
+    label  = "DEPLOYTOOLS"
   }
 ]
 os                     = "win11"
 communicator           = "winrm"
 http_directory         = ""
-cloud_init             = false
+cloud_init             = true
 boot_command           = []
 provisioner            = []
 windows_language       = "zh-CN"
 windows_input_language = "zh-CN"
 machine                = "q35"
+bios                   = "ovmf"
+efi_config = {
+  efi_storage_pool  = "local-lvm"
+  efi_type          = "4m"
+  pre_enrolled_keys = true
+}
