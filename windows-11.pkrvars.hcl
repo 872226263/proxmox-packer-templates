@@ -9,7 +9,7 @@ cpu_cores          = 16
 cpu_type           = "host"
 disk_size          = "80G"
 # Data disk (1600G) should be added after cloning the template
-# Drive mapping: D:=VirtIO, E:=Windows ISO, F:=Scripts+Autounattend
+# Drive mapping: D:=VirtIO(ide0), E:=Windows ISO(ide2), F:=Scripts+Autounattend(sata3)
 additional_iso_files = [
   {
     type         = "ide"
@@ -31,7 +31,7 @@ unattended_content = {
 additional_cd_files = [
   {
     type   = "sata"
-    index  = 0
+    index  = 3
     files  = ["./http/windows-scripts/*"]
     label  = "DEPLOYTOOLS"
   }
@@ -40,7 +40,8 @@ os                     = "win11"
 communicator           = "winrm"
 http_directory         = ""
 cloud_init             = true
-boot_command           = []
+boot_wait              = "1s"
+boot_command           = ["<spacebar><spacebar><spacebar>"]
 provisioner            = []
 windows_language       = "zh-CN"
 windows_input_language = "zh-CN"
