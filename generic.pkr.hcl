@@ -49,6 +49,17 @@ source "proxmox-iso" "vm" {
     cache_mode        = var.disk_cache
   }
 
+  dynamic "disks" {
+    for_each = var.additional_disks
+    content {
+      storage_pool = disks.value.storage_pool != null ? disks.value.storage_pool : var.disk_storage_pool
+      disk_size    = disks.value.disk_size
+      format       = disks.value.format != null ? disks.value.format : var.disk_format
+      type         = disks.value.type != null ? disks.value.type : var.disk_type
+      cache_mode   = disks.value.cache_mode != null ? disks.value.cache_mode : var.disk_cache
+    }
+  }
+
   network_adapters {
     bridge      = var.network_adapter
     model       = var.network_adapter_model

@@ -80,6 +80,18 @@ variable "disk_cache" {
   default     = "none"
 }
 
+variable "additional_disks" {
+  description = "Additional data disks to attach to the VM."
+  type = list(object({
+    disk_size    = string
+    storage_pool = optional(string)
+    format       = optional(string)
+    type         = optional(string)
+    cache_mode   = optional(string)
+  }))
+  default = []
+}
+
 variable "network_adapter" {
   description = "Bridge to which the network device should be attached."
   type        = string
