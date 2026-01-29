@@ -8,9 +8,7 @@ ballooning_minimum = 4096
 cpu_cores          = 16
 cpu_type           = "host"
 disk_size          = "80G"
-additional_disks = [
-  { disk_size = "1600G" }
-]
+# Data disk (1600G) should be added after cloning the template
 additional_iso_files = [
   {
     iso_file     = "virtio-win-0.1.285.iso"
