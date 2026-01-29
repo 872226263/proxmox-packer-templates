@@ -177,7 +177,7 @@
                 <SynchronousCommand wcm:action="add">
                     <Order>1</Order>
                     <!-- Enable WinRM service -->
-                    <CommandLine>powershell -ExecutionPolicy Bypass -File F:\setup.ps1</CommandLine>
+                    <CommandLine>powershell -ExecutionPolicy Bypass -File D:\setup.ps1</CommandLine>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
