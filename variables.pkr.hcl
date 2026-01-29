@@ -82,13 +82,7 @@ variable "disk_cache" {
 
 variable "additional_disks" {
   description = "Additional data disks to attach to the VM."
-  type = list(object({
-    disk_size    = string
-    storage_pool = optional(string)
-    format       = optional(string)
-    type         = optional(string)
-    cache_mode   = optional(string)
-  }))
+  type    = list(map(string))
   default = []
 }
 

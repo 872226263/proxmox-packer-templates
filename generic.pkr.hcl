@@ -52,11 +52,11 @@ source "proxmox-iso" "vm" {
   dynamic "disks" {
     for_each = var.additional_disks
     content {
-      storage_pool = disks.value.storage_pool != null ? disks.value.storage_pool : var.disk_storage_pool
+      storage_pool = lookup(disks.value, "storage_pool", var.disk_storage_pool)
       disk_size    = disks.value.disk_size
-      format       = disks.value.format != null ? disks.value.format : var.disk_format
-      type         = disks.value.type != null ? disks.value.type : var.disk_type
-      cache_mode   = disks.value.cache_mode != null ? disks.value.cache_mode : var.disk_cache
+      format       = lookup(disks.value, "format", var.disk_format)
+      type         = lookup(disks.value, "type", var.disk_type)
+      cache_mode   = lookup(disks.value, "cache_mode", var.disk_cache)
     }
   }
 
