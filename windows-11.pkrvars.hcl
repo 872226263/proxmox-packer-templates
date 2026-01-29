@@ -9,7 +9,7 @@ cpu_cores          = 16
 cpu_type           = "host"
 disk_size          = "80G"
 # Data disk (1600G) should be added after cloning the template
-# Drive mapping (all SATA for UEFI): D:=Windows ISO(sata0), E:=VirtIO(sata1), F:=Scripts(sata2)
+# Drive mapping: D:=Windows ISO(sata0), E:=Scripts(sata2), F:=VirtIO(sata1)
 iso_type  = "sata"
 iso_index = 0
 additional_iso_files = [
