@@ -9,11 +9,13 @@ cpu_cores          = 16
 cpu_type           = "host"
 disk_size          = "80G"
 # Data disk (1600G) should be added after cloning the template
-# Drive mapping: D:=VirtIO(ide0), E:=Windows ISO(ide2), F:=Scripts+Autounattend(sata3)
+# Drive mapping (all SATA for UEFI): D:=Windows ISO(sata0), E:=VirtIO(sata1), F:=Scripts(sata2)
+iso_type  = "sata"
+iso_index = 0
 additional_iso_files = [
   {
-    type         = "ide"
-    index        = 0
+    type         = "sata"
+    index        = 1
     iso_file     = "virtio-win-0.1.285.iso"
     iso_url      = "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.285-1/virtio-win-0.1.285.iso"
     iso_checksum = "e14cf2b94492c3e925f0070ba7fdfedeb2048c91eea9c5a5afb30232a3976331"
@@ -31,7 +33,7 @@ unattended_content = {
 additional_cd_files = [
   {
     type   = "sata"
-    index  = 3
+    index  = 2
     files  = ["./http/windows-scripts/*"]
     label  = "DEPLOYTOOLS"
   }

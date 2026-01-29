@@ -100,8 +100,8 @@ source "proxmox-iso" "vm" {
   }
 
   boot_iso {
-    # type             = var.iso_type
-    # index            = var.iso_index
+    type             = var.iso_type
+    index            = var.iso_index
     iso_file         = var.iso_download ? "" : "${var.iso_storage_pool}:iso/${var.iso_file}"
     iso_storage_pool = var.iso_storage_pool
     iso_url          = var.iso_download ? var.iso_url : ""
@@ -141,7 +141,7 @@ source "proxmox-iso" "vm" {
   cloud_init              = var.cloud_init
   cloud_init_storage_pool = var.cloud_init_storage_pool
 
-  boot           = "order=${var.disk_type}0;ide2;net0"
+  boot           = "order=${var.disk_type}0;${var.iso_type}${var.iso_index};net0"
   boot_command   = var.boot_command
   boot_wait      = var.boot_wait
   task_timeout   = var.task_timeout

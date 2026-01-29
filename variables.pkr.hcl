@@ -248,6 +248,18 @@ variable "iso_file" {
   type        = string
 }
 
+variable "iso_type" {
+  description = "Bus type for boot ISO (ide or sata)"
+  type        = string
+  default     = "sata"
+}
+
+variable "iso_index" {
+  description = "Bus index for boot ISO"
+  type        = number
+  default     = 0
+}
+
 variable "iso_storage_pool" {
   description = "Storage pool of the iso file"
   type        = string
