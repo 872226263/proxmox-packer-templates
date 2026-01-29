@@ -1,5 +1,6 @@
 name         = "windows-11-template"
 iso_file     = "Win11_25H2_Pro_Chinese_Simplified_x64.iso"
+iso_url      = ""
 iso_checksum = "none"
 iso_download = false
 disk_size    = "80G"
