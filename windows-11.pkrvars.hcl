@@ -21,7 +21,7 @@ unattended_content = {
     template = "./http/windows/Autounattend-win11.xml.pkrtpl"
     vars = {
       driver_version  = "w11"
-      image_name      = "Windows 11 Pro"
+      image_name      = "Windows 11 专业版"
     }
   }
 }
@@ -32,9 +32,11 @@ additional_cd_files = [
     files  = ["./http/windows-scripts/*"]
   }
 ]
-os             = "win11"
-communicator   = "winrm"
-http_directory = ""
-cloud_init   = false
-boot_command   = []
-provisioner    = []
+os                     = "win11"
+communicator           = "winrm"
+http_directory         = ""
+cloud_init             = false
+boot_command           = []
+provisioner            = []
+windows_language       = "zh-CN"
+windows_input_language = "zh-CN"
