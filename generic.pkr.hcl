@@ -31,10 +31,11 @@ source "proxmox-iso" "vm" {
   node                 = var.node
   pool                 = var.pool
 
-  cpu_type = var.cpu_type
-  sockets  = var.cpu_sockets
-  cores    = var.cpu_cores
-  memory   = var.memory
+  cpu_type           = var.cpu_type
+  sockets            = var.cpu_sockets
+  cores              = var.cpu_cores
+  memory             = var.memory
+  ballooning_minimum = var.ballooning_minimum
 
   http_interface    = var.packer_http_interface
   http_bind_address = var.packer_http_bind_address

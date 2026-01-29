@@ -50,6 +50,12 @@ variable "memory" {
   default     = 2048
 }
 
+variable "ballooning_minimum" {
+  description = "Minimum memory for balloon device in Megabytes. Set to 0 to disable ballooning."
+  type        = number
+  default     = 0
+}
+
 variable "disk_storage_pool" {
   description = "The name of the storage pool on which to store the disks."
   type        = string
